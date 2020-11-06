@@ -8,18 +8,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import com.example.lab_1.databinding.FragmentRegisterBinding
+import com.example.lab_1.databinding.FragmentNameBinding
 
 class NameFragment : Fragment() {
 
-    lateinit var binding: FragmentRegisterBinding
+    lateinit var binding: FragmentNameBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_register, container, false
+            inflater, R.layout.fragment_name, container, false
         )
 
         binding.nextButton.setOnClickListener {
