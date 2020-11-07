@@ -1,5 +1,6 @@
 package com.example.lab_1
 
+import android.content.res.Resources
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
@@ -17,8 +18,11 @@ import kotlin.math.log
 class LoginFragment : Fragment() {
 
     private lateinit var binding: FragmentLoginBinding
+    lateinit var users: Users
     private var loggedState: Boolean = false
     private var myName: String = ""
+    private var myAge: Int = 0
+    private var myPwd: String = ""
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -28,8 +32,20 @@ class LoginFragment : Fragment() {
             inflater, R.layout.fragment_login, container, false
         )
 
+        users = Users()
+
         binding.loginButton.setOnClickListener {
-            checkLogin(it)
+            var currentName = getArguments()?.getString("name").toString()
+            var currentAge = getArguments()?.getString("age").toString()
+            var currentPwd = getArguments()?.getString("pwd").toString()
+            if (!users.findUser(currentName) and (currentName.isNotEmpty())) {
+                users.addUser(currentName, currentAge, currentPwd)
+            }
+            if (users.size() > 0) {
+                checkLogin(it)
+            } else {
+                Toast.makeText(context, "Please, register", Toast.LENGTH_SHORT).show();
+            }
         }
 
         binding.logoutButton.setOnClickListener {
@@ -48,21 +64,31 @@ class LoginFragment : Fragment() {
             if (TextUtils.isEmpty(binding.nameEdit.text.toString()) or TextUtils.isEmpty(binding.pwdEdit.text.toString())) {
                 Toast.makeText(context, "Please, enter your shit above", Toast.LENGTH_SHORT).show();
             } else {
-                loggedState = true
-                myName = binding.nameEdit.text.toString()
-                binding.name = myName
-                //                binding.age
-                binding.nameEdit.text.clear()
-                binding.pwdEdit.text.clear()
+                if (users.findUser(binding.nameEdit.text.toString())) {
 
-                binding.nameEdit.visibility = View.GONE
-                binding.pwdEdit.visibility = View.GONE
-                binding.loginButton.visibility = View.GONE
-                binding.registerText.visibility = View.GONE
-                binding.nameLog.visibility = View.VISIBLE
-//                binding.ageLog.visibility = View.VISIBLE
-                binding.logoutButton.visibility = View.VISIBLE
-                invalidateAll()
+                    loggedState = true
+                    myName = users.getName(binding.nameEdit.text.toString())
+                    myAge = users.getAge(binding.nameEdit.text.toString()).toInt()
+                    myPwd = users.getPwd(binding.nameEdit.text.toString())
+
+                    binding.name = myName
+                    binding.age = myAge
+                    binding.pwd = myPwd
+                    binding.nameEdit.text.clear()
+                    binding.pwdEdit.text.clear()
+
+                    binding.nameEdit.visibility = View.GONE
+                    binding.pwdEdit.visibility = View.GONE
+                    binding.loginButton.visibility = View.GONE
+                    binding.registerText.visibility = View.GONE
+                    binding.nameLog.visibility = View.VISIBLE
+                    binding.ageLog.visibility = View.VISIBLE
+                    binding.pwdLog.visibility = View.VISIBLE
+                    binding.logoutButton.visibility = View.VISIBLE
+                    invalidateAll()
+                } else {
+                    Toast.makeText(context, "Not registered!", Toast.LENGTH_SHORT).show();
+                }
             }
         }
     }
@@ -71,8 +97,12 @@ class LoginFragment : Fragment() {
         binding.apply {
             loggedState = false
             myName = ""
+            myAge = 0
+            myPwd = ""
             binding.logoutButton.visibility = View.GONE
             binding.nameLog.visibility = View.GONE
+            binding.ageLog.visibility = View.GONE
+            binding.pwdLog.visibility = View.GONE
             binding.nameEdit.visibility = View.VISIBLE
             binding.pwdEdit.visibility = View.VISIBLE
             binding.loginButton.visibility = View.VISIBLE
@@ -99,6 +129,8 @@ class LoginFragment : Fragment() {
                     binding.loginButton.visibility = View.GONE
                     binding.registerText.visibility = View.GONE
                     binding.nameLog.visibility = View.VISIBLE
+                    binding.ageLog.visibility = View.VISIBLE
+                    binding.pwdLog.visibility = View.VISIBLE
                     binding.logoutButton.visibility = View.VISIBLE
                     invalidateAll()
                 }

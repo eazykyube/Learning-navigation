@@ -14,6 +14,7 @@ import com.example.lab_1.databinding.FragmentAgeBinding
 class AgeFragment : Fragment() {
 
     lateinit var binding: FragmentAgeBinding
+    private lateinit var bundle: Bundle
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -35,7 +36,10 @@ class AgeFragment : Fragment() {
             if (TextUtils.isEmpty(binding.ageEditReg.text.toString())) {
                 Toast.makeText(context, "Please, enter your shit above", Toast.LENGTH_SHORT).show();
             } else {
-                view.findNavController().navigate(R.id.action_ageFragment_to_pwdFragment)
+                bundle = Bundle()
+                bundle.putString("name", getArguments()?.getString("name"))
+                bundle.putString("age", binding.ageEditReg.text.toString())
+                view.findNavController().navigate(R.id.action_ageFragment_to_pwdFragment, bundle)
             }
         }
     }

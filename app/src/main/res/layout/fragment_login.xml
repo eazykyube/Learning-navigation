@@ -7,9 +7,12 @@
         <variable
             name="name"
             type="String" />
-<!--        <variable-->
-<!--            name="age"-->
-<!--            type="Integer" />-->
+        <variable
+            name="age"
+            type="Integer" />
+        <variable
+            name="pwd"
+            type="String" />
     </data>
 
     <LinearLayout
@@ -64,13 +67,21 @@
             android:text='@{"Welcome, " + name}'
             android:visibility="gone" />
 
-<!--        <TextView-->
-<!--            android:id="@+id/age_log"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:textAlignment="center"-->
-<!--            android:text="@{age.toString()}"-->
-<!--            android:visibility="gone" />-->
+        <TextView
+            android:id="@+id/age_log"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="@{age.toString()}"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/pwd_log"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="@{pwd.toString()}"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/logout_button"

@@ -10,11 +10,13 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.lab_1.databinding.FragmentNameBinding
 
 class NameFragment : Fragment() {
 
     lateinit var binding: FragmentNameBinding
+    private lateinit var bundle: Bundle
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -36,7 +38,9 @@ class NameFragment : Fragment() {
             if (TextUtils.isEmpty(binding.nameEditReg.text.toString())) {
                 Toast.makeText(context, "Please, enter your shit above", Toast.LENGTH_SHORT).show();
             } else {
-                view.findNavController().navigate(R.id.action_nameFragment_to_ageFragment)
+                bundle = Bundle()
+                bundle.putString("name", binding.nameEditReg.text.toString())
+                view.findNavController().navigate(R.id.action_nameFragment_to_ageFragment, bundle)
             }
         }
     }
