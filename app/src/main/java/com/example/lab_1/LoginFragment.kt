@@ -20,9 +20,9 @@ class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
     lateinit var users: Users
     private var loggedState: Boolean = false
-    private var myName: String = ""
-    private var myAge: Int = 0
-    private var myPwd: String = ""
+    private var myName: String? = ""
+    private var myAge: Int? = 0
+    private var myPwd: String? = ""
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -114,6 +114,8 @@ class LoginFragment : Fragment() {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putString("name", myName)
+        outState.putInt("age", myAge!!)
+        outState.putString("pwd", myPwd)
         outState.putBoolean("logged", loggedState)
     }
 
@@ -121,7 +123,12 @@ class LoginFragment : Fragment() {
         super.onViewStateRestored(savedInstanceState)
         if (savedInstanceState != null) {
             loggedState = savedInstanceState.getBoolean("logged")
-            binding.name = savedInstanceState.getString("name")
+            myName = savedInstanceState.getString("name")
+            binding.name = myName
+            myAge = savedInstanceState.getInt("age")
+            binding.age = myAge
+            myPwd = savedInstanceState.getString("pwd")
+            binding.pwd = myPwd
             if (loggedState) {
                 binding.apply {
                     binding.nameEdit.visibility = View.GONE
