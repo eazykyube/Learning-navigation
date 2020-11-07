@@ -14,5 +14,26 @@
     <fragment
         android:id="@+id/nameFragment"
         android:name="com.example.lab_1.NameFragment"
-        android:label="NameFragment" />
+        android:label="NameFragment" >
+        <action
+            android:id="@+id/action_nameFragment_to_ageFragment"
+            app:destination="@id/ageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ageFragment"
+        android:name="com.example.lab_1.AgeFragment"
+        android:label="AgeFragment" >
+        <action
+            android:id="@+id/action_ageFragment_to_pwdFragment"
+            app:destination="@id/pwdFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pwdFragment"
+        android:name="com.example.lab_1.PwdFragment"
+        android:label="PwdFragment" >
+        <action
+            android:id="@+id/action_pwdFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment" />
+    </fragment>
 </navigation>

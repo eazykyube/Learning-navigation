@@ -8,23 +8,22 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
-import com.example.lab_1.databinding.FragmentNameBinding
+import com.example.lab_1.databinding.FragmentPwdBinding
 
-class NameFragment : Fragment() {
+class PwdFragment : Fragment() {
 
-    lateinit var binding: FragmentNameBinding
+    lateinit var binding: FragmentPwdBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_name, container, false
+            inflater, R.layout.fragment_pwd, container, false
         )
 
-        binding.nextButton.setOnClickListener {
+        binding.regButton.setOnClickListener {
             checkRegister(it)
         }
 
@@ -33,21 +32,11 @@ class NameFragment : Fragment() {
 
     private fun checkRegister(view: View) {
         binding.apply {
-            if (TextUtils.isEmpty(binding.nameEditReg.text.toString())) {
+            if (TextUtils.isEmpty(binding.pwdEditReg.text.toString())) {
                 Toast.makeText(context, "Please, enter your shit above", Toast.LENGTH_SHORT).show();
             } else {
-                view.findNavController().navigate(R.id.action_nameFragment_to_ageFragment)
+                view.findNavController().navigate(R.id.action_pwdFragment_to_loginFragment)
             }
         }
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-
-    }
-
-    override fun onViewStateRestored(savedInstanceState: Bundle?) {
-        super.onViewStateRestored(savedInstanceState)
-
     }
 }

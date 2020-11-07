@@ -3,6 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="name"
+            type="String" />
+<!--        <variable-->
+<!--            name="age"-->
+<!--            type="Integer" />-->
+    </data>
+
     <LinearLayout
         android:id="@+id/loginLinear"
         android:layout_width="match_parent"
@@ -47,6 +56,22 @@
             android:onClick="onClick"
             android:clickable="true" />
 
+        <TextView
+            android:id="@+id/name_log"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text='@{"Welcome, " + name}'
+            android:visibility="gone" />
+
+<!--        <TextView-->
+<!--            android:id="@+id/age_log"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textAlignment="center"-->
+<!--            android:text="@{age.toString()}"-->
+<!--            android:visibility="gone" />-->
+
         <Button
             android:id="@+id/logout_button"
             android:layout_width="wrap_content"
@@ -54,6 +79,7 @@
             android:layout_gravity="center_horizontal"
             android:text="@string/logout"
             android:visibility="gone" />
+
 
     </LinearLayout>
 </layout>
