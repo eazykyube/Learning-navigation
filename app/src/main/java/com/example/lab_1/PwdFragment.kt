@@ -41,7 +41,7 @@ class PwdFragment : Fragment() {
     private fun checkRegister(view: View) {
         binding.apply {
             if (TextUtils.isEmpty(binding.pwdEditReg.text.toString())) {
-                Toast.makeText(context, "Please, enter your shit above", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Please, enter your data above", Toast.LENGTH_SHORT).show();
             } else {
 
                 name = getArguments()?.getString("name").toString()
@@ -52,7 +52,7 @@ class PwdFragment : Fragment() {
                 bundle.putString("name", name)
                 bundle.putString("age", age)
                 bundle.putString("pwd", pwd)
-
+                Toast.makeText(context, "User created", Toast.LENGTH_SHORT).show();
                 view.findNavController().navigate(R.id.action_pwdFragment_to_loginFragment, bundle)
             }
         }

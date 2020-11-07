@@ -36,7 +36,7 @@ class NameFragment : Fragment() {
     private fun checkRegister(view: View) {
         binding.apply {
             if (TextUtils.isEmpty(binding.nameEditReg.text.toString())) {
-                Toast.makeText(context, "Please, enter your shit above", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Please, enter your data above", Toast.LENGTH_SHORT).show();
             } else {
                 bundle = Bundle()
                 bundle.putString("name", binding.nameEditReg.text.toString())

@@ -62,9 +62,10 @@ class LoginFragment : Fragment() {
     private fun checkLogin(view: View) {
         binding.apply {
             if (TextUtils.isEmpty(binding.nameEdit.text.toString()) or TextUtils.isEmpty(binding.pwdEdit.text.toString())) {
-                Toast.makeText(context, "Please, enter your shit above", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Please, enter your data above", Toast.LENGTH_SHORT).show();
             } else {
-                if (users.findUser(binding.nameEdit.text.toString())) {
+                if (users.findUser(binding.nameEdit.text.toString()) and
+                        users.getPwd(binding.nameEdit.text.toString()).equals(binding.pwdEdit.text.toString())) {
 
                     loggedState = true
                     myName = users.getName(binding.nameEdit.text.toString())
@@ -87,7 +88,7 @@ class LoginFragment : Fragment() {
                     binding.logoutButton.visibility = View.VISIBLE
                     invalidateAll()
                 } else {
-                    Toast.makeText(context, "Not registered!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Not registered", Toast.LENGTH_SHORT).show();
                 }
             }
         }
