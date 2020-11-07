@@ -56,6 +56,7 @@
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:text="@string/register_start"
+            android:textColor="@color/green"
             android:onClick="onClick"
             android:clickable="true" />
 
@@ -64,7 +65,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:text='@{"Welcome, " + name}'
+            android:text='@{"Welcome, " + name + "!"}'
+            android:textSize="@dimen/padding"
             android:visibility="gone" />
 
         <TextView
@@ -72,7 +74,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:text="@{age.toString()}"
+            android:text='@{"Age: " + age.toString()}'
+            android:textSize="@dimen/padding"
             android:visibility="gone" />
 
         <TextView
@@ -80,7 +83,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:text="@{pwd.toString()}"
+            android:text='@{"Password: " + pwd.toString()}'
+            android:textSize="@dimen/padding"
             android:visibility="gone" />
 
         <Button
@@ -89,6 +93,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="@string/logout"
+            android:textSize="@dimen/padding"
             android:visibility="gone" />
 
 
