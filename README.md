@@ -1,4 +1,4 @@
-# MAD_Lab_1
+# MAD_Assignment_1
 
 Implementation of an assignment within the Mobile Application Development course in Innopolis University. Was done as a free-listener of the course.
 
