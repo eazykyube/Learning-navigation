@@ -31,3 +31,7 @@ General requirements:
 - Application design should support any type of screens (forget about hard coded width and height, check it in XML) 
 - If I change screen orientation application should store all information that was entered (you should add on save instance state)
 - All resources should be stored in res files.
+
+## Screenshot
+
+![](https://drive.google.com/uc?export=view&id=1KqsL55d29zQVeNFV4u26LrMlKEhLdKL3)
